@@ -27,7 +27,8 @@
             <kind>1</kind>
             <string>///Create puzzle pieces
 piece_grid = ds_grid_create(3, 3)
-var sprite_w = 64
+sprite_w = 64
+mouse_down = false
 for( var yy = 0; yy &lt; 3; yy++){
     for( var xx= 0; xx &lt; 3; xx++){
         var t_piece = instance_create((xx + 0.5) * sprite_w, (yy + 0.5) * sprite_w, obj_pieces);
@@ -36,6 +37,40 @@ for( var yy = 0; yy &lt; 3; yy++){
         t_piece.image_yscale = 2
         piece_grid[ xx, yy] = t_piece;
     }
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Input control
+puzzle_x = mouse_x div sprite_w;
+puzzle_y = mouse_y div sprite_w;
+if(mouse_check_button_pressed(mb_left)){
+
+} else if(mouse_check_button(mb_left)){
+
+}
+if(mouse_check_button_released(mb_left)){
+
 }
 </string>
           </argument>
