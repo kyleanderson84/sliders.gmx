@@ -102,15 +102,50 @@ if(mouse_check_button_released(mb_left)){
         step = dif_x div sprite_w;
         temp_a = piece_grid[ 0, puzzle_y];
         temp_b = piece_grid[ 1, puzzle_y];
-        temp_b = piece_grid[ 2, puzzle_y];
-        if( sign(step) == -1){
-            piece_grid[ 3 + step, puzzle_y];
+        temp_c = piece_grid[ 2, puzzle_y];
+        if(step == -1){
+            piece_grid[ 0, puzzle_y] = temp_b
+            piece_grid[ 1, puzzle_y] = temp_c
+            piece_grid[ 2, puzzle_y] = temp_a
             
-        } else {
-        
+        } else if(step == -2){
+            piece_grid[ 0, puzzle_y] = temp_c
+            piece_grid[ 1, puzzle_y] = temp_a
+            piece_grid[ 2, puzzle_y] = temp_b
+        } else if(step == 1){
+            piece_grid[ 0, puzzle_y] = temp_c
+            piece_grid[ 1, puzzle_y] = temp_a
+            piece_grid[ 2, puzzle_y] = temp_b
+            
+        } else if(step == 2){
+            piece_grid[ 0, puzzle_y] = temp_b
+            piece_grid[ 1, puzzle_y] = temp_c
+            piece_grid[ 2, puzzle_y] = temp_a
         }
     } else {
-    
+        step = dif_y div sprite_w;
+        temp_a = piece_grid[ puzzle_x, 0];
+        temp_b = piece_grid[ puzzle_x, 1];
+        temp_c = piece_grid[ puzzle_x, 2];
+        if(step == -1){
+            piece_grid[ puzzle_x, 0] = temp_b
+            piece_grid[ puzzle_x, 1] = temp_c
+            piece_grid[ puzzle_x, 2] = temp_a
+            
+        } else if(step == -2){
+            piece_grid[ puzzle_x, 0] = temp_c
+            piece_grid[ puzzle_x, 1] = temp_a
+            piece_grid[ puzzle_x, 2] = temp_b
+        } else if(step == 1){
+            piece_grid[ puzzle_x, 0] = temp_c
+            piece_grid[ puzzle_x, 1] = temp_a
+            piece_grid[ puzzle_x, 2] = temp_b
+            
+        } else if(step == 2){
+            piece_grid[ puzzle_x, 0] = temp_b
+            piece_grid[ puzzle_x, 1] = temp_c
+            piece_grid[ puzzle_x, 2] = temp_a
+        }
     }
 }
 </string>
