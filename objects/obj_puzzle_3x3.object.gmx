@@ -62,13 +62,13 @@ for( var yy = 0; yy &lt; 3; yy++){
           <argument>
             <kind>1</kind>
             <string>///Input control
-
+var sensitivity = 10;
 if(mouse_check_button_pressed(mb_left)){
     start_x = mouse_x;
     start_y = mouse_y;
     puzzle_x = mouse_x div sprite_w;
     puzzle_y = mouse_y div sprite_w;
-} else if(mouse_check_button(mb_left)){
+} else if(false and mouse_check_button(mb_left)){
     dif_x = mouse_x - start_x;
     dif_y = mouse_y - start_y;
     if( abs(dif_x) &gt; abs(dif_y)){
@@ -98,53 +98,37 @@ if(mouse_check_button_pressed(mb_left)){
 if(mouse_check_button_released(mb_left)){
     dif_x = mouse_x - start_x;
     dif_y = mouse_y - start_y;
-    if( abs(dif_x) &gt; abs(dif_y)){
+    if( abs(dif_x) &gt; abs(dif_y) and abs(dif_x) &gt; sensitivity){
         step = dif_x div sprite_w;
         temp_a = piece_grid[ 0, puzzle_y];
         temp_b = piece_grid[ 1, puzzle_y];
         temp_c = piece_grid[ 2, puzzle_y];
-        if(step == -1){
+        if(sign(step) == -1){
             piece_grid[ 0, puzzle_y] = temp_b
             piece_grid[ 1, puzzle_y] = temp_c
             piece_grid[ 2, puzzle_y] = temp_a
             
-        } else if(step == -2){
-            piece_grid[ 0, puzzle_y] = temp_c
-            piece_grid[ 1, puzzle_y] = temp_a
-            piece_grid[ 2, puzzle_y] = temp_b
-        } else if(step == 1){
+        } else if(sign(step) == 1){
             piece_grid[ 0, puzzle_y] = temp_c
             piece_grid[ 1, puzzle_y] = temp_a
             piece_grid[ 2, puzzle_y] = temp_b
             
-        } else if(step == 2){
-            piece_grid[ 0, puzzle_y] = temp_b
-            piece_grid[ 1, puzzle_y] = temp_c
-            piece_grid[ 2, puzzle_y] = temp_a
         }
-    } else {
+    } else if(abs(dif_y) &gt; sensitivity){
         step = dif_y div sprite_w;
         temp_a = piece_grid[ puzzle_x, 0];
         temp_b = piece_grid[ puzzle_x, 1];
         temp_c = piece_grid[ puzzle_x, 2];
-        if(step == -1){
+        if(sign(step) == -1){
             piece_grid[ puzzle_x, 0] = temp_b
             piece_grid[ puzzle_x, 1] = temp_c
             piece_grid[ puzzle_x, 2] = temp_a
             
-        } else if(step == -2){
-            piece_grid[ puzzle_x, 0] = temp_c
-            piece_grid[ puzzle_x, 1] = temp_a
-            piece_grid[ puzzle_x, 2] = temp_b
-        } else if(step == 1){
+        } else if(sign(step) == 1){
             piece_grid[ puzzle_x, 0] = temp_c
             piece_grid[ puzzle_x, 1] = temp_a
             piece_grid[ puzzle_x, 2] = temp_b
             
-        } else if(step == 2){
-            piece_grid[ puzzle_x, 0] = temp_b
-            piece_grid[ puzzle_x, 1] = temp_c
-            piece_grid[ puzzle_x, 2] = temp_a
         }
     }
 }
